@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const sentimood = new Sentimood();
 
   const latidos = {
     positivo: [
@@ -13,6 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
       'https://actions.google.com/sounds/v1/animals/dog_whine.ogg',
     ]
   };
+
+  function analisarSentimento(texto) {
+    const palavrasPositivas = ['feliz', 'bom', 'ótimo', 'alegre', 'amor', 'gostar', 'legal', 'bom'];
+    const palavrasNegativas = ['triste', 'ruim', 'péssimo', 'chateado', 'ódio', 'não gosto', 'horrível', 'problema'];
+
+    let score = 0;
+    const textoMinusculo = texto.toLowerCase();
+
+    palavrasPositivas.forEach(palavra => {
+      if (textoMinusculo.includes(palavra)) score++;
+    });
+
+    palavrasNegativas.forEach(palavra => {
+      if (textoMinusculo.includes(palavra)) score--;
+    });
+
+    return score; // positivo, negativo ou 0 neutro
+  }
 
   function pegarLatido(score) {
     let lista = latidos.neutro;
@@ -43,8 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     statusDiv.textContent = 'Analisando o texto...';
 
-    const resultado = sentimood.analyze(text);
-    const score = resultado.score;
+    const score = analisarSentimento(text);
 
     statusDiv.textContent = `Sentimento detectado: ${score > 0 ? 'Positivo' : score < 0 ? 'Negativo' : 'Neutro'}`;
 
@@ -64,4 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.getElementById('convertBtn').addEventListener('click', textoParaLatido);
+
 });
