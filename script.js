@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const latidos = {
-    positivo: [
-      'https://actions.google.com/sounds/v1/animals/dog_bark_short.ogg',
-      'https://actions.google.com/sounds/v1/animals/dog_bark.ogg',
-    ],
-    negativo: [
-      'https://actions.google.com/sounds/v1/animals/dog_growl.ogg',
-    ],
-    neutro: [
-      'https://actions.google.com/sounds/v1/animals/dog_whine.ogg',
-    ]
-  };
+  positivo: [
+    'https://cdn.pixabay.com/download/audio/2022/03/15/audio_0d2a38105f.mp3?filename=dog-bark-1-6281.mp3',
+    'https://cdn.pixabay.com/download/audio/2021/11/18/audio_c7aa3a5116.mp3?filename=dog-barking-6-6200.mp3',
+  ],
+  negativo: [
+    'https://cdn.pixabay.com/download/audio/2022/03/15/audio_15e9474d94.mp3?filename=dog-growl-6282.mp3',
+  ],
+  neutro: [
+    'https://cdn.pixabay.com/download/audio/2021/11/18/audio_f7dd112c1e.mp3?filename=dog-whimper-6201.mp3',
+  ]
+};
 
   function analisarSentimento(texto) {
     const palavrasPositivas = ['feliz', 'bom', 'ótimo', 'alegre', 'amor', 'gostar', 'legal', 'bom'];
